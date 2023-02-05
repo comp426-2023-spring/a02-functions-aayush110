@@ -44,10 +44,10 @@ if (args.n && args.e) {
 } else if (args.n && args.w) {
     var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + North + '&longitude=' + West + '&timezone' + timezone + '&daily=precipitation_hours'); 
 } else if (args.s && args.e) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + South + '&longitude=' + East + '&timezone' + timezone + '&daily+precipitation_hours');
+    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + South + '&longitude=' + East + '&timezone' + timezone + '&daily=precipitation_hours');
 }
   else {
-  var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + South + '&longitude=' + West + '&timezone' + timezone + '&daily+precipitation_hours');
+  var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + South + '&longitude=' + West + '&timezone' + timezone + '&daily=precipitation_hours');
 }
 
 const data = await response.json();
@@ -75,7 +75,7 @@ if (days && days != 1) {
 }
 
 } else {
-  var rainy = data.daily_precipitation_hours[1];
+  var rainy = data.daily.precipitation_hours[1];
   if (rainy == 0) {
       console.log("You won't need your galoshes " + day);
   } else {

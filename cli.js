@@ -74,7 +74,7 @@ if (days && days != 1) {
    console.log("You will probably need your galoshes " + day);
 }
 
- else {
+} else {
   var rainy = data.daily.precipitation_hours[1];
   if (rainy == 0) {
       console.log("You won't need your galoshes " + day);

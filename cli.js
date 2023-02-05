@@ -48,18 +48,43 @@ if (args.n && args.e) {
 }
 
 const data = await response.json();
-
+if (args.j) {
+        console.log(data);
+        process.exit(0);
+}
 const days = args.d;
 
 if (days == 0) {
-  console.log("today.")
+   var day = "today.";
 } else if (days > 1) {
-  console.log("in " + days + " days.")
+   var day = "in " + days + " days.";
 } else {
-  console.log("tomorrow.")
+  var day = "tomorrow.";
 }
 
-if (args.j) {
-	console.log(data);
-	process.exit(0);
+if (days && days != 1) {
+   var rainy = data.daily.precipitation_hours[days];
+   if (rainy == 0) {
+   console.log("You won't need your galoshes " + day);
+} else {
+   console.log("You will probably need your galoshes " + day);
 }
+
+} else {
+  var rainy = data.daily_precipitation_hours[1];
+  if (rainy == 0) {
+      console.log("You won't need your galoshes " + day);
+  } else {
+     console.log("You will probably need your galoshes " + day);
+  }
+} 
+
+
+
+
+
+
+
+
+
+

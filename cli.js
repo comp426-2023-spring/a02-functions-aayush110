@@ -36,7 +36,7 @@ if (args.w) {
     var West  = Math.round((args.w + Number.EPSILON) * 100) / 100;
 }
 if (!((North && East) || (North && West) || (South && East) || (South && West))) { 
-    console.log('Longitude/Latitude have to be in range!')
+    console.log('Latitude must be in range') 
     process.exit(0);
 }
 if (args.n && args.e) {

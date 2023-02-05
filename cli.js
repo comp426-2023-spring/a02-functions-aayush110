@@ -24,18 +24,18 @@ if (args.z) {
 } else { var timezone = tz; }
 
 if (args.n) {
-    var North = Math.round((args.n + Number.EPSILON) * 100) / 100;
+    var nor = Math.round((args.n + Number.EPSILON) * 100) / 100;
 }
 if (args.s) {
-    var South = Math.round((args.s + Number.EPSILON) * 100) / 100;
+    var sou = Math.round((args.s + Number.EPSILON) * 100) / 100;
 }
 if (args.e) {
-    var East = Math.round((args.e + Number.EPSILON) * 100) / 100;
+    var eas = Math.round((args.e + Number.EPSILON) * 100) / 100;
 }
 if (args.w) {
-    var West  = Math.round((args.w + Number.EPSILON) * 100) / 100;
+    var wes   = Math.round((args.w + Number.EPSILON) * 100) / 100;
 }
-if (!((North && East) || (North && West) || (South && East) || (South && West))) { 
+if (!((nor && eas) || (nor && wes) || (sou && eas) || (sou && wes))) { 
     console.log('Latitude must be in range') 
     process.exit(0);
 }

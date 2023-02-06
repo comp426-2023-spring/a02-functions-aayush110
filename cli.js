@@ -40,14 +40,14 @@ if (!((nor && eas) || (nor && wes) || (sou && eas) || (sou && wes))) {
     process.exit(0);
 }
 if (args.n && args.e) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + North + '&longitude=' + East + '&timezone' + timezone + '&daily=precipitation_hours');
+    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + nor + '&longitude=' + eas  + '&timezone' + timezone + '&daily=precipitation_hours');
 } else if (args.n && args.w) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + North + '&longitude=' + West + '&timezone' + timezone + '&daily=precipitation_hours'); 
+    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + nor + '&longitude=' + wes  + '&timezone' + timezone + '&daily=precipitation_hours'); 
 } else if (args.s && args.e) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + South + '&longitude=' + East + '&timezone' + timezone + '&daily=precipitation_hours');
+    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + sou + '&longitude=' + eas + '&timezone' + timezone + '&daily=precipitation_hours');
 }
   else {
-  var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + South + '&longitude=' + West + '&timezone' + timezone + '&daily=precipitation_hours');
+  var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + sou + '&longitude=' + wes + '&timezone' + timezone + '&daily=precipitation_hours');
 }
 
 const data = await response.json();

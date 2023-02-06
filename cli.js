@@ -19,36 +19,14 @@ if (args.h) {
 
 const tz = moment.tz.guess();
 
+var latitude = args.n || (args.s * -1);
+var longitude = args.e || (args.w * -1);
+
 if (args.z) {
     var timezone = args.z;
 } else { var timezone = tz; }
 
-if (args.n) {
-    var nor = Math.round((args.n + Number.EPSILON) * 100) / 100;
-}
-if (args.s) {
-    var sou = Math.round((args.s + Number.EPSILON) * 100) / 100;
-}
-if (args.e) {
-    var eas = Math.round((args.e + Number.EPSILON) * 100) / 100;
-}
-if (args.w) {
-    var wes   = Math.round((args.w + Number.EPSILON) * 100) / 100;
-}
-if (!((nor && eas) || (nor && wes) || (sou && eas) || (sou && wes))) { 
-    console.log('Latitude must be in range') 
-    process.exit(0);
-}
-if (args.n && args.e) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + nor + '&longitude=' + eas  + '&timezone' + timezone + '&daily=precipitation_hours');
-} else if (args.n && args.w) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + nor + '&longitude=' + wes  + '&timezone' + timezone + '&daily=precipitation_hours'); 
-} else if (args.s && args.e) {
-    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + sou + '&longitude=' + eas + '&timezone' + timezone + '&daily=precipitation_hours');
-}
-  else {
-  var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-' + sou + '&longitude=' + wes + '&timezone' + timezone + '&daily=precipitation_hours');
-}
+    var response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours'+ '&timezone=' + timezone);
 
 const data = await response.json();
 
@@ -82,6 +60,7 @@ if (days && days != 1) {
      console.log("You will probably need your galoshes " + day);
   }
 } 
+
 
 
 
